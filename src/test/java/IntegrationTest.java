@@ -34,6 +34,52 @@ public class IntegrationTest {
         }
     }
 
+    @Test
+    public void testMyIntegration() {
+        List<TestCase> cases = getMyTestCase();
+        for (TestCase testCase : cases) {
+            List<Integer> actual = searcher.search(
+                    testCase.target,
+                    indexer.index(testCase.documents)
+            );
+            assertEquals(testCase.expect, actual);
+        }
+    }
+
+    private List<TestCase> getMyTestCase() {
+        List<String> documents = Util.getMyDocumentsForIntTest();
+
+        List<TestCase> testCases = new ArrayList<>(Arrays.asList(
+                new TestCase(
+                        documents,
+                        "java project",
+                        new ArrayList<>(Arrays.asList(3, 7))
+                ),
+                new TestCase(
+                        documents,
+                        "this does not exist",
+                        Util.emptyResult()
+                ),
+                new TestCase(
+                        documents,
+                        "java",
+                        new ArrayList<>(Arrays.asList(3, 4, 6, 7))
+                ),
+                new TestCase(
+                        documents,
+                        "green button",
+                        new ArrayList<>(Arrays.asList(1, 8))
+                ),
+                new TestCase(
+                        documents,
+                        "the final java project is awesome",
+                        new ArrayList<>(Arrays.asList(7))
+                )
+        ));
+
+        return testCases;
+    }
+
     private List<TestCase> getTestCase() {
         List<String> documents = Util.getDocumentsForIntTest();
 
