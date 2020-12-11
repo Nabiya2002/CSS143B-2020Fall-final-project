@@ -112,6 +112,22 @@ public class Util {
         return index;
     }
 
+    public static List<String> getMyDocumentsForIntTest() {
+        return new ArrayList<>(
+                Arrays.asList(
+                        "test create your own account at the https://github.com/",
+                        "in the action tab of the repo, click the green button to enable action",
+                        "open your own repo in intellij using get from version control",
+                        "create a new java project",
+                        "java",
+                        "start early. be active. ask questions",
+                        "fluent with object-oriented programming using java",
+                        "the final java project is awesome",
+                        "press the green button to run the project"
+                )
+        );
+    }
+
     public static List<String> getDocumentsForIntTest() {
         return new ArrayList<>(
                 Arrays.asList(
